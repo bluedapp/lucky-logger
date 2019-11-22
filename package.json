@@ -1,6 +1,6 @@
 {
   "name": "lucky-logger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple logging library...",
   "main": "index.js",
   "types": "index.d.ts",
@@ -32,15 +32,15 @@
   },
   "homepage": "https://github.com/bluedapp/lucky-logger",
   "dependencies": {
-    "colors": "^1.3.3",
+    "colors": "^1.4.0",
     "mkdirp": "^0.5.1",
-    "moment": "^2.22.2",
-    "winston": "^3.1.0",
-    "winston-daily-rotate-file": "^3.5.1"
+    "moment": "^2.24.0",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.3.0"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
-    "eslint-config-blued": "0.0.18",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint": "^6.6.0",
+    "eslint-config-blued": "^1.1.2",
+    "eslint-plugin-import": "^2.18.2"
   }
 }

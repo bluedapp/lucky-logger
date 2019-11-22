@@ -1,11 +1,11 @@
-const fs = require('fs')
-const path = require('path')
 const colors = require('colors')
-const moment = require('moment')
+const fs = require('fs')
 const mkdirp = require('mkdirp')
+const moment = require('moment')
+const path = require('path')
 const winston = require('winston')
-require('winston-daily-rotate-file')
 const { handleDefault, levels } = require('./utils/common')
+require('winston-daily-rotate-file')
 
 const localPath = path.join(path.dirname(__dirname), '../logs')
 const servePath = `/data/logs/`
@@ -18,7 +18,7 @@ const root = !situation ? servePath : localPath
  * Main Process
  * @param {Object} config attribute
  */
-function LuckyLogger (config = {}) {
+function luckyLogger (config = {}) {
   // default
   const defaults = {
     appName: 'app',
@@ -139,4 +139,4 @@ function LuckyLogger (config = {}) {
   return handleDaily()
 }
 
-module.exports = LuckyLogger
+module.exports = luckyLogger

@@ -4,6 +4,7 @@
  */
 function handleError (err) {
   let error = null
+
   if (judgeType(err) === 'error') {
     error = {
       name: err.name,
@@ -14,6 +15,7 @@ function handleError (err) {
       columnNumber: err.columnNumber || '',
     }
   }
+
   return error
 }
 /**

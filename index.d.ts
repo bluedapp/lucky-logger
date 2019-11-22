@@ -14,6 +14,6 @@ declare namespace logger.options {
   }
 }
 
-declare function logger(config?: logger.options): any
+declare function luckyLogger(config?: logger.options): any
 
-export = logger
+export = luckyLogger
