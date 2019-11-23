@@ -7,19 +7,18 @@ const winston = require('winston')
 const { handleDefault, levels } = require('./utils/common')
 require('winston-daily-rotate-file')
 
-const localPath = path.join(path.dirname(__dirname), '../logs')
-const servePath = `/data/logs/`
 const development = process.env.NODE_ENV === 'development'
 const production = process.env.NODE_ENV === 'production'
+const localPath = path.join(path.dirname(__dirname), '../logs')
+const servePath = `/data/logs/`
 const situation = !(development || production)
 const root = !situation ? servePath : localPath
 
 /**
- * Main Process
+ * luckyLogger
  * @param {Object} config attribute
  */
 function luckyLogger (config = {}) {
-  // default
   const defaults = {
     appName: 'app',
     dailyRotateFile: {
@@ -32,7 +31,6 @@ function luckyLogger (config = {}) {
     root,
   }
 
-  // merge
   const options = Object.assign({}, defaults, config)
   let logsPath = path.join(options.root, options.appName)
 
@@ -66,13 +64,12 @@ function luckyLogger (config = {}) {
       ],
     })
 
-    // local or not “verbose”, log will output in Terminal
-    if (situation || data.type !== 'verbose') {
+    // If it is a local environment
+    // The log will be displayed in the terminal
+    if (situation) {
       const pass = (data.type === 'info' || data.type === 'warn')
       logger.add(new winston.transports.Console({
         format: winston.format.combine(
-          // winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-          // winston.format.colorize(colorize()),
           winston.format.printf(info => {
             const { message } = info
             const news = pass ? colors[data.color](JSON.stringify(message)) : colors[data.color](message)
@@ -87,20 +84,19 @@ function luckyLogger (config = {}) {
   })
 
   /**
-   * Write access to the records
+   * handleLogger
+   * Consolidation log
    * @param {Object} data
    */
   function handleLogger ({ level, datum } = {}) {
     const data = Object.assign({}, datum, {
-      // appName: options.appName,
-      // level: level.type,
       timestamp: timestamp(),
     })
     openMeans[level.type][level.type](data)
   }
 
   /**
-   * Public methods
+   * handleDaily
    */
   function handleDaily () {
     const result = {}

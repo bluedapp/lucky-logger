@@ -90,11 +90,6 @@ const levels = [
     icon: '✔',
     type: 'info',
   },
-  {
-    color: 'cyan',
-    icon: '✈',
-    type: 'verbose',
-  },
 ]
 
 module.exports = {
