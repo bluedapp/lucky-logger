@@ -1,19 +1,19 @@
-lucky-logger
-===
+
+# lucky-logger
+
+[![npm version][npm-image]][npm-url]
 
 A simple logging library...
 
 ## Installation
 
-[https://npmjs.org/package/lucky-logger](https://npmjs.org/package/lucky-logger)
-
-```bash
-$ npm install lucky-logger
+``` js
+$ npm install lucky - logger
 ```
 
 ## Usage
 
-```javascript
+``` javascript
 const Koa = require('koa')
 const Router = require('koa-router')
 const luckylogger = require('lucky-logger')
@@ -24,12 +24,18 @@ const router = new Router()
 const logger = luckylogger()
 
 router.get('/', (ctx, next) => {
-  logger.info({ notice: 'I lose what i love most...' })
-  logger.warn({ notice: 'I also want to look for a girlfriend...' })
+  logger.info({
+    notice: 'I lose what i love most...'
+  })
+  logger.warn({
+    notice: 'I also want to look for a girlfriend...'
+  })
   try {
     alert(err)
   } catch (err) {
-    logger.error(err, { notice: 'Who is my love match?' })
+    logger.error(err, {
+      notice: 'Who is my love match?'
+    })
   }
 
   ctx.body = 'Hello World'
@@ -38,11 +44,11 @@ router.get('/', (ctx, next) => {
 app.use(router.routes())
 
 app.listen(0258)
-
 ```
 
 ## Options
-```javascript
+
+``` js
 // defaults options
 {
   appName: 'app',
@@ -54,8 +60,11 @@ app.listen(0258)
   fileName: 'app',
   root: path.join(path.dirname(__dirname), '../logs'),
 }
-
 ```
 
 ## License
-[MIT License](http://www.opensource.org/licenses/mit-license.php)
+
+  [MIT License](http://www.opensource.org/licenses/mit-license.php)
+ 
+[npm-image]: https://img.shields.io/npm/v/lucky-logger.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/lucky-logger

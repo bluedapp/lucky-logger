@@ -12,7 +12,7 @@ function handleError (err) {
       stack: err.stack,
       fileName: err.fileName || '',
       lineNumber: err.lineNumber || '',
-      columnNumber: err.columnNumber || '',
+      columnNumber: err.columnNumber || ''
     }
   }
 
@@ -46,7 +46,7 @@ function handleMessage (data) {
  */
 function handleDefault ({ err, message, time } = {}) {
   const response = {
-    msg: handleMessage(message),
+    msg: handleMessage(message)
   }
 
   const error = handleError(err)
@@ -78,22 +78,22 @@ const levels = [
   {
     color: 'red',
     icon: '✖',
-    type: 'error',
+    type: 'error'
   },
   {
     color: 'yellow',
     icon: '✎',
-    type: 'warn',
+    type: 'warn'
   },
   {
     color: 'green',
     icon: '✔',
-    type: 'info',
-  },
+    type: 'info'
+  }
 ]
 
 module.exports = {
   handleDefault,
   judgeType,
-  levels,
+  levels
 }

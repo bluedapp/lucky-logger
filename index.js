@@ -10,7 +10,7 @@ require('winston-daily-rotate-file')
 const development = process.env.NODE_ENV === 'development'
 const production = process.env.NODE_ENV === 'production'
 const localPath = path.join(path.dirname(__dirname), '../logs')
-const servePath = `/data/logs/`
+const servePath = '/data/logs/'
 const situation = !(development || production)
 const root = !situation ? servePath : localPath
 
@@ -24,11 +24,11 @@ function luckyLogger (config = {}) {
     dailyRotateFile: {
       datePattern: 'YYYY-MM-DD',
       maxFiles: '30d',
-      maxSize: '100m',
+      maxSize: '100m'
     },
     fileName: 'app',
     format: winston.format.json(),
-    root,
+    root
   }
 
   const options = Object.assign({}, defaults, config)
@@ -59,9 +59,9 @@ function luckyLogger (config = {}) {
           datePattern,
           filename: path.join(logsPath, `${options.fileName}.${data.type}-%DATE%.log`),
           maxFiles,
-          maxSize,
-        }),
-      ],
+          maxSize
+        })
+      ]
     })
 
     // If it is a local environment
@@ -75,8 +75,8 @@ function luckyLogger (config = {}) {
             const news = pass ? colors[data.color](JSON.stringify(message)) : colors[data.color](message)
             const response = `[${timestamp()}][${data.type}] ${data.icon} \n${news}`
             return response
-          }),
-        ),
+          })
+        )
       }))
     }
 
@@ -90,7 +90,7 @@ function luckyLogger (config = {}) {
    */
   function handleLogger ({ level, datum } = {}) {
     const data = Object.assign({}, datum, {
-      timestamp: timestamp(),
+      timestamp: timestamp()
     })
     openMeans[level.type][level.type](data)
   }
@@ -103,7 +103,7 @@ function luckyLogger (config = {}) {
     levels.forEach(data => {
       const content = {
         error: null,
-        message: null,
+        message: null
       }
 
       result[data.type] = (...args) => {
@@ -119,12 +119,12 @@ function luckyLogger (config = {}) {
 
         const datum = handleDefault({
           err: content.error,
-          message: content.message,
+          message: content.message
         })
 
         handleLogger({
           level: data,
-          datum,
+          datum
         })
       }
     })
