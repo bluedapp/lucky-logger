@@ -8,7 +8,7 @@ A simple logging library...
 ## Installation
 
 ``` js
-$ npm install lucky - logger
+$ npm install lucky-logger
 ```
 
 ## Usage
